@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,6 +12,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+    private final static String testRunsDb = "TEST_RUNS_DB";
+
+
+    private SQLiteDatabase testRunsDatabase;
+
+
     private Button switchActivityBtn, savePrefsBtn;
     private EditText nameEdit, ageEdit;
     private TextView nameText, ageText;
@@ -25,6 +32,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        testRunsDatabase = openOrCreateDatabase(testRunsDb, MODE_PRIVATE,null);
+
+
+
         nameText = findViewById(R.id.nameText);
         ageText = findViewById(R.id.ageText);
 
@@ -65,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent a = new Intent(getApplicationContext(), TestActivity.class);
+                a.putExtra("runName", "none");
                 startActivity(a);
             }
         });

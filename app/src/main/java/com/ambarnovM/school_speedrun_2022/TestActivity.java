@@ -13,6 +13,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TestActivity extends AppCompatActivity implements Test_question_list_fragment.leftFragmentListener, Test_Question_fragment.rightFragmentListener{
+
+
+
+
+
     private Test_question_list_fragment leftFragment;
     private Test_Question_fragment rightFragment;
     private Test test;
@@ -30,6 +35,11 @@ public class TestActivity extends AppCompatActivity implements Test_question_lis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.test_activity);
 
+        Bundle bundle = getIntent().getExtras();
+        String message = bundle.getString("runName");
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+
+        
 
 
         List<Question> questionList = new ArrayList<Question>();
@@ -51,6 +61,8 @@ public class TestActivity extends AppCompatActivity implements Test_question_lis
         Question q4 = new Question("jksdhfksdkhf", "sjdfhsldkj", variantList, "2");
         Test test = new Test(questionList);
         this.test = test;
+
+
         leftFragment = new Test_question_list_fragment();
         leftFragment.setTest(test);
         rightFragment = new Test_Question_fragment();
@@ -76,4 +88,11 @@ public class TestActivity extends AppCompatActivity implements Test_question_lis
     public void saveAnswer(int position, String answer) {
 
     }
+
+    public void initNewRunTable(){
+
+
+    }
+
+
 }

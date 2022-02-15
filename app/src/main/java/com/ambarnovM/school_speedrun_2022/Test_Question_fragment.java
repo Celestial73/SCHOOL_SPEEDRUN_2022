@@ -154,7 +154,6 @@ public class Test_Question_fragment extends Fragment implements View.OnClickList
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_test__question_fragment, container, false);
-        Toast.makeText(getContext(), "213123", Toast.LENGTH_SHORT).show();
         this.mainLayout = view;
         Button saveBtn = mainLayout.findViewById(R.id.saveQuestionAnswerBtn);
         saveBtn.setOnClickListener(this);
@@ -166,6 +165,4 @@ public class Test_Question_fragment extends Fragment implements View.OnClickList
         LinearLayout linLay = mainLayout.findViewById(R.id.variantsLayout);
         getAnswer(linLay);
     }
-
-
 }
